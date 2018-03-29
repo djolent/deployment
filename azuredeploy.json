@@ -1,9 +1,10 @@
 {
-   "$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+	"$schema":"http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
    "contentVersion":"1.0.0.0",
    "parameters":{
       "siteName":{
          "type":"string",
+         "defaultValue":"dnastorage",
          "metadata":{
             "description":"The name of the web app that you wish to create."
          }
@@ -24,7 +25,7 @@
             "Standard",
             "Premium"
          ],
-         "defaultValue":"Standard",
+         "defaultValue":"Premium",
          "metadata":{
             "description":"The pricing tier for the hosting plan."
          }
@@ -44,7 +45,7 @@
             "P2",
             "P3"
          ],
-         "defaultValue":"S2",
+         "defaultValue":"P2",
          "metadata":{
             "description":"The instance size of the hosting plan (small, medium, or large)."
          }
@@ -68,7 +69,7 @@
             "2",
             "3"
          ],
-         "defaultValue":"1",
+         "defaultValue":"2",
          "metadata":{
             "description":"The number of workers."
          }
@@ -89,6 +90,7 @@
       },
       "aadTenant":{
          "type":"string",
+         "defaultValue":"microsoft.onmicrosoft.com",
          "metadata":{
             "description":"The AAD tenants to use, e.g. 'johndoe.onmicrosoft.com'"
          }
@@ -102,6 +104,7 @@
       },
       "aadApplicationClientId":{
          "type":"string",
+         "defaultValue":"848ea7f3-d0d2-4acd-81fc-4a4dbdacedc8",
          "metadata":{
             "description":"The AAD application client Id."
          }
@@ -111,9 +114,9 @@
       "webSitesApiVersion":"2015-08-01",
       "storageApiVersion":"2015-06-15",
       "batchApiVersion":"2015-12-01",
-      "storageAccountName":"[concat(uniqueString(resourceGroup().id), 'sa')]",
+      "storageAccountName":"palixstoragewebapp",
       "storageAccountType":"Standard_LRS",
-      "batchAccountName":"[concat(uniqueString(resourceGroup().id), 'ba')]"
+      "batchAccountName":"palixbatchwebapp"
    },
    "resources":[
       {
